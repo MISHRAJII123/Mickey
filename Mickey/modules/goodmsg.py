@@ -1,7 +1,7 @@
 import re
 from pyrogram import filters
 import random
-from Mickey import Mickey
+from Mickey import MickeyBot
 
 @MickeyBot.on_message(filters.command(["gn", "n", "oodnight", "ood Night", "ood night"], prefixes=["/", "g", "G"]))
 async def goodnight_command_handler(_, message):
@@ -10,11 +10,11 @@ async def goodnight_command_handler(_, message):
     
     if send_sticker:
         sticker_id = await get_random_sticker()  # Ensure this is awaited
-        await nexichat.send_sticker(message.chat.id, sticker_id)  # Await send_sticker
+        await MickeyBot.send_sticker(message.chat.id, sticker_id)  # Await send_sticker
         await message.reply_text(f"**❖ ɢᴏᴏᴅ ɴɪɢʜᴛ ❖ sᴡᴇᴇᴛ ᴅʀᴇᴀᴍs ❖**\n\n**❍  {sender} 😴 **\n\n**❖ ɢᴏ ᴛᴏ ➥ sʟᴇᴇᴘ ᴇᴀʀʟʏ**")
     else:
         emoji = await get_random_emoji()  # Ensure this is awaited
-        await Mickey.send_message(message.chat.id, emoji)  # Await send_message
+        await MickeyBot.send_message(message.chat.id, emoji)  # Await send_message
         await message.reply_text(f"**❖ ɢᴏᴏᴅ ɴɪɢʜᴛ ❖ sᴡᴇᴇᴛ ᴅʀᴇᴀᴍs ❖**\n\n**❍  {sender} {emoji} **\n\n**❖ ɢᴏ ᴛᴏ ➥ sʟᴇᴇᴘ ᴇᴀʀʟʏ**")
 
 # Define async functions for stickers and emoji
